@@ -1,0 +1,56 @@
+<div id="valeurs" class="content-section">
+    <div class="card">
+        <h2>🛡️ Notre Serment 🛡️</h2>
+        <p>Nous sommes ici pour combattre ⚔️, progresser 📈 et surtout nous amuser ensemble 🎉.</p>
+        <p>Chaque membre fait grandir le royaume 👑, et ensemble nous forgerons de <strong>The Iron Throne</strong> un empire que nul ne pourra renverser 💪🔥<br>
+        ✨ Avec toi, notre bannière flottera sur tous les royaumes.</p>
+        <p class="highlight">👑 Longue vie à IT ! Le Trône de Fer n’attend que les braves !!!</p>
+
+        <hr style="border: 0; border-top: 1px solid #444; margin: 20px 0;">
+
+        <h2>🏰 Règles & Objectifs du Royaume 🏰</h2>
+        <h3>🏛️ Grands Monuments (GM)</h3>
+        <ul>
+            <li>Posséder l’Arche (prioritaire) 🏹</li>
+            <li>L’Observatoire 🔭 ou d’autres merveilles seront un atout</li>
+        </ul>
+
+        <h3>🤝 Soutien mutuel</h3>
+        <p>Participer à la fondation des Grands Monuments (1 PF minimum, même si le monument est déjà érigé)</p>
+
+        <h3>💰 Commerce loyal</h3>
+        <p>Échanges équitables au sein du royaume ⚖️ (Sauf accord contraire entre marchands)</p>
+
+        <h3>🚫 Interdictions</h3>
+        <p style="color: #e74c3c; font-weight: bold;">Les snipes intra-guilde sont interdits ❌</p>
+
+        <h3>💎 Engagement</h3>
+        <ul>
+            <li>Polir et motiver les membres régulièrement 💪</li>
+            <li>Prévenir toute absence de plus de 7 jours 📅</li>
+        </ul>
+
+        <hr style="border: 0; border-top: 1px solid #444; margin: 20px 0;">
+
+        <h2>📜 Les Lois du Trône 📜</h2>
+        <p><em>"Un royaume fort repose sur des règles justes et partagées."</em></p>
+        
+        <p><strong>🎯 Engagements de chaque membre :</strong></p>
+        <ul>
+            <li><strong>⚔️ Champs de Bataille (CBG) :</strong> 500 combats minimum (ou 250 négociations)</li>
+            <li><strong>🌌 Incursions Quantiques (IQ) :</strong> 500 contributions</li>
+            <li><strong>🧭 Expéditions (EG) :</strong> Tous les niveaux ouverts 🔓 (Forte participation attendue 🔥)</li>
+        </ul>
+
+        <hr style="border: 0; border-top: 1px solid #444; margin: 20px 0;">
+
+        <h2>🌟 Nos Valeurs 🌟</h2>
+        <p>Notre bannière s’élève pour offrir à tous une fraternité solide 🤝, un royaume de progrès 📈 et un havre de camaraderie 🏰.</p>
+        <ul style="list-style: none;">
+            <li>💛 <strong>Solidarité :</strong> nul ne combat seul ⚔️</li>
+            <li>🛡️ <strong>Loyauté :</strong> la parole donnée vaut plus que l’or 💰</li>
+            <li>🤝 <strong>Respect & courtoisie :</strong> même les rois se doivent de l’honneur 👑</li>
+            <li>😊 <strong>Bonne humeur & entraide :</strong> un royaume sans joie est un royaume perdu 🎉</li>
+        </ul>
+    </div>
+</div>
