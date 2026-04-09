@@ -3,525 +3,351 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Iron Throne - Forge of Empires</title>
+    <title>Iron Ray-Volution - Forge of Empires</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
-        /* Style général */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #1a1a1a;
-            color: #e0e0e0;
-            margin: 0;
-            line-height: 1.6;
+        :root {
+            --gold: #f1c40f;
+            --dark-bg: #121212;
+            --card-bg: rgba(38, 38, 38, 0.9);
+            --text-color: #e0e0e0;
+            --accent-red: #e74c3c;
+            --nav-bg: rgba(18, 18, 18, 0.95);
         }
 
+        /* Styles Mode Clair */
+        body.light-mode {
+            --dark-bg: #f4f4f4;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-color: #333;
+            --nav-bg: rgba(240, 240, 240, 0.95);
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            margin: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        html { scroll-behavior: smooth; }
+
         header {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=1000');
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=1000');
             background-size: cover;
             background-position: center;
-            height: 300px;
+            height: 50vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            border-bottom: 4px solid #444;
-            text-shadow: 2px 2px 8px #000;
+            text-align: center;
+            border-bottom: 2px solid var(--gold);
         }
 
         h1 {
-            font-size: 3.5rem;
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 8vw, 4rem);
             margin: 0;
-            color: #bdc3c7;
+            color: #fff;
             text-transform: uppercase;
-            letter-spacing: 5px;
+            letter-spacing: 8px;
+            text-shadow: 0 0 20px rgba(241, 196, 15, 0.4);
         }
 
-        .subtitle {
-            font-style: italic;
-            color: #f1c40f;
-        }
+        .subtitle { font-size: 1.2rem; color: var(--gold); letter-spacing: 3px; margin-top: 10px; font-style: italic; }
 
-        /* Navigation */
         nav {
-            background-color: #2c3e50;
-            padding: 1rem;
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem;
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
         }
 
         nav a {
-            color: white;
+            color: var(--text-color);
             text-decoration: none;
             margin: 0 15px;
             font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #f1c40f;
-        }
-
-        /* Contenu principal */
-        .container {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 30px;
-            background-color: #262626;
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-        }
-
-        .section-title {
-            border-left: 5px solid #f1c40f;
-            padding-left: 15px;
-            color: #f1c40f;
             text-transform: uppercase;
-            margin-top: 40px;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: var(--gold); }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+
+        .card-foe {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 4px;
+            border-left: 5px solid var(--gold);
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .section-title-foe {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(241, 196, 15, 0.2);
+            padding-bottom: 10px;
         }
 
         .highlight-box {
-            background-color: #333;
-            padding: 20px;
-            border-radius: 5px;
-            border: 1px solid #444;
+            background: rgba(128, 128, 128, 0.1);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid rgba(128, 128, 128, 0.2);
             margin: 20px 0;
         }
 
-        .rule-item {
-            margin-bottom: 15px;
-            padding-left: 10px;
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 10px;
         }
 
-        .important {
-            color: #e74c3c;
-            font-weight: bold;
-        }
-
-        ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        hr {
-            border: 0;
-            border-top: 1px solid #444;
-            margin: 40px 0;
-        }
-
-        footer {
+        .member-name, .contact-entry {
+            background: rgba(128, 128, 128, 0.1);
+            border-radius: 4px;
+            font-size: 0.85rem;
             text-align: center;
-            padding: 20px;
-            font-size: 0.8rem;
-            color: #777;
+            border: 1px solid rgba(128, 128, 128, 0.2);
+            transition: all 0.3s ease;
         }
 
-        /* Style Spécial Dédicace Mapo */
-        .creator-card {
-            background: linear-gradient(145deg, #262626, #2d2d2d);
-            border: 2px solid #f1c40f;
-            text-align: center;
-            padding: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .creator-title {
-            font-size: 2rem;
-            color: #f1c40f;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 10px;
+        .member-name a, .contact-entry a {
+            display: block;
+            padding: 12px 10px;
+            color: inherit;
+            text-decoration: none;
+            width: 100%;
         }
 
-        .creator-name {
-            font-size: 1.5rem;
-            color: #fff;
+        .member-name:hover, .contact-entry:hover {
+            border-color: var(--gold);
+            background: rgba(241, 196, 15, 0.15);
+            transform: translateY(-3px);
+        }
+
+        /* Boutons Discord */
+        .discord-btn {
+            padding: 12px 25px;
+            text-decoration: none;
             font-weight: bold;
-            text-shadow: 0 0 10px rgba(241, 196, 15, 0.5);
+            border-radius: 4px;
+            display: inline-block;
+            margin: 10px;
+            transition: 0.3s;
+        }
+        .btn-primary { background: var(--gold); color: #000; }
+        .btn-secondary { background: #5865F2; color: #fff; }
+        .discord-btn:hover { filter: brightness(1.2); }
+
+        /* Bouton Toggle Thème */
+        #theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--gold);
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 2000;
+            font-size: 1.2rem;
         }
 
- 
-        /* --- ANIMATION DES ÉTINCELLES (FORGE) --- */
-@keyframes particles {
-    0% { transform: translateY(0) scale(1); opacity: 1; }
-    100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
-}
-.particle {
-    position: fixed; bottom: -10px; background: #f1c40f;
-    width: 3px; height: 3px; border-radius: 50%; pointer-events: none;
-    z-index: -1; animation: particles linear infinite;
-}
+        .particle {
+            position: fixed; bottom: -10px; background: var(--gold);
+            width: 2px; height: 2px; border-radius: 50%; pointer-events: none;
+            z-index: -1; animation: particles linear infinite;
+        }
+        @keyframes particles {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
 
-/* --- MODE CLAIR (ROYAL) --- */
-body.light-mode { background-color: #f4f4f4; color: #333; }
-body.light-mode .card-foe { background-color: #fff; border-left-color: #d4af37; color: #333; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-body.light-mode .member-name { background: #eee; color: #333; border-left-color: #d4af37; }
-
-/* --- GALERIE & STATS --- */
-.gallery-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px;
-}
-.gallery-item {
-    width: 100%; height: 120px; background: #444; border-radius: 4px; 
-    display: flex; align-items: center; justify-content: center; font-size: 0.8rem; border: 1px solid #555;
-}
-.stats-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-.stats-table td { padding: 10px; border-bottom: 1px solid #444; }
-.stats-val { color: #f1c40f; font-weight: bold; text-align: right; }
-
-/* --- BOUTON FLOTTANT --- */
-#theme-toggle {
-    position: fixed; bottom: 20px; right: 20px; z-index: 2000;
-    background: #f1c40f; border: none; padding: 10px; border-radius: 50%; cursor: pointer; font-size: 1.2rem;
-}
-
-        /* Décoration de la section Recrutement */
-.contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 15px;
-    margin-top: 25px;
-}
-
-.contact-card {
-    background: #2c3e50; /* Bleu sombre médiéval */
-    color: #ffffff;
-    padding: 15px;
-    border-radius: 6px;
-    border-left: 4px solid #f1c40f; /* Bordure dorée */
-    font-weight: bold;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-    transition: transform 0.2s, background 0.3s;
-    display: flex;
-    align-items: center;
-}
-
-.contact-card:hover {
-    transform: translateX(5px);
-    background: #34495e;
-    cursor: default;
-}
-
-#recrutement p {
-    font-style: italic;
-    color: #bdc3c7;
-    margin-bottom: 20px;
-}
-
-/* Pour aligner les contacts proprement au centre */
-.contact-list-centered {
-    display: flex;
-    flex-direction: column; /* Aligne les noms les uns sous les autres */
-    align-items: center;    /* Les centre horizontalement */
-    gap: 10px;              /* Espace entre les noms */
-    margin-top: 20px;
-}
-
-.contact-item {
-    background: rgba(255, 255, 255, 0.05); /* Léger fond pour les faire ressortir */
-    padding: 10px 20px;
-    border-radius: 4px;
-    width: fit-content;      /* La boîte s'adapte à la taille du nom */
-    border: 1px dashed #444; /* Petit rappel du style médiéval */
-    font-weight: bold;
-    color: #f1c40f;          /* Texte en doré pour les pseudos */
-}
-
-/* On s'assure que la section titre reste bien alignée */
-#recrutement .section-title {
-    text-align: left; 
-    margin-bottom: 20px;
-}
-
-/* Style calqué sur ton image */
-.card-foe {
-    background-color: #262626; /* Gris anthracite de l'image */
-    padding: 25px;
-    border-radius: 4px;
-    border-left: 5px solid #f1c40f; /* La barre dorée caractéristique */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    max-width: 800px;
-    margin: 20px auto;
-}
-
-.section-title-foe {
-    color: #f1c40f;
-    margin-top: 0;
-    font-size: 1.5rem;
-    text-transform: none; 
-    
-    /* Reste naturel comme sur l'image */
-}
-
-.intro-text {
-    color: #e0e0e0;
-    margin-bottom: 20px;
-}
-
-.contact-container {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.contact-entry {
-    background-color: #333333; /* Un peu plus clair pour détacher le nom */
-    padding: 12px 20px;
-    border-radius: 4px;
-    font-weight: bold;
-    color: #ffffff;
-    border: 1px solid #444;
-    transition: all 0.2s;
-    width: fit-content; /* S'adapte au nom */
-}
-
-.contact-entry:hover {
-    border-color: #f1c40f;
-    background-color: #3d3d3d;
-    padding-left: 25px; /* Petit effet de décalage au survol */
-}
-
-/* On affiche tout pour le mode scroll */
-.content-section {
-    display: block; 
-    opacity: 1;
-    margin-bottom: 60px; /* Espace entre les blocs pour ne pas que ce soit tassé */
-    scroll-margin-top: 80px; /* Évite que le titre soit caché par le menu fixe quand on clique */
-}
-
-/* Style des liens du menu */
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    transition: color 0.3s;
-}
-
-nav a:hover {
-    color: #f1c40f;
-}
-
+        footer { text-align: center; padding: 40px; font-size: 0.8rem; opacity: 0.5; }
     </style>
 </head>
-<body>
+<body id="mainBody">
+
+<button id="theme-toggle" onclick="toggleTheme()" title="Changer de mode">🌓</button>
 
 <header>
-    <h1>The Iron Throne</h1>
-    <p class="subtitle">La puissance de l'acier, la sagesse des âges</p>
+    <div data-aos="zoom-out" data-aos-duration="2000">
+        <h1>Iron Ray-Volution</h1>
+        <p class="subtitle">"La puissance de l'acier, la sagesse des âges"</p>
+    </div>
 </header>
 
 <nav>
     <a href="#accueil">Accueil</a>
-    <a href="#regles">Règles & Lois</a>
+    <a href="#loi">Lois & Serment</a>
     <a href="#membres">Membres</a>
     <a href="#recrutement">Recrutement</a>
-    <a href="#discord">Discord</a>
+    <a href="#discord">Diplomatie</a>
 </nav>
 
 <div class="container">
-    <section id="accueil">
-        <h2 class="section-title">Bienvenue, Souverain</h2>
-        <p>Bienvenue sur le portail officiel de la guilde <strong>The Iron Throne</strong>. Nous sommes une communauté active sur <em>Forge of Empires</em>, dédiée à l'entraide, au commerce équitable et à la domination des Champs de Bataille.</p>
+    
+    <section id="accueil" class="card-foe" data-aos="fade-up">
+        <h2 class="section-title-foe">Bienvenue, Souverain</h2>
+        <p>Portail officiel de la guilde <a href="https://foe-data.ovh/world/fr17/guild/45954" target="_blank" style="color:var(--gold); font-weight:bold;">Iron Ray-Volution</a>.</p>
+        <p>Nous sommes une communauté active, dédiée à l'entraide, au commerce équitable et à la domination des Champs de Bataille.</p>
     </section>
 
-    <hr>
-
-    <section id="regles">
-        <h2 class="section-title">🛡️ Notre Serment 🛡️</h2>
+    <section id="loi" class="card-foe" data-aos="fade-up">
+        <h2 class="section-title-foe">🛡️ Notre Serment</h2>
         <div class="highlight-box">
             <p>Nous sommes ici pour combattre ⚔️, progresser 📈 et surtout nous amuser ensemble 🎉.</p>
-            <p>Chaque membre fait grandir le royaume 👑, et ensemble nous forgerons de <strong>The Iron Throne</strong> un empire que nul ne pourra renverser 💪🔥</p>
-            <p>✨ Avec toi, notre bannière flottera sur tous les royaumes.</p>
-            <p style="text-align: center; font-size: 1.2rem; color: #f1c40f;"><strong>👑 Longue vie à IT ! Le Trône de Fer n’attend que les braves !!!</strong></p>
+            <p>Chaque membre fait grandir le royaume 👑. Ensemble nous forgerons de l'<strong>Iron Ray-Volution</strong> un empire invincible 💪🔥</p>
+            <p style="text-align: center; color: var(--gold); font-size: 1.2rem;"><strong>👑 Longue vie à IT !</strong></p>
         </div>
 
-        <h2 class="section-title">🏰 Règles & Objectifs du Royaume 🏰</h2>
-        
-        <h3>🏛️ Grands Monuments (GM)</h3>
-        <ul>
-            <li>🔹 Posséder l’Arche (prioritaire) 🏹</li>
-            <li>🔹 L’Observatoire 🔭 ou d’autres merveilles seront un atout</li>
-        </ul>
-
-        <h3>🤝 Soutien mutuel</h3>
-        <p>Participer à la fondation des Grands Monuments (1 FP minimum, même si le monument est déjà érigé)</p>
-
-        <h3>💰 Commerce loyal</h3>
-        <p>Échanges équitables au sein du royaume ⚖️ (Sauf accord contraire entre marchands)</p>
-
-        <h3>🚫 Interdictions</h3>
-        <p class="important">Les snipes intra-guilde sont interdits ❌</p>
-
-        <h3>💎 Engagement</h3>
-        <ul>
-            <li>🔹 Polir et motiver les membres régulièrement 💪</li>
-            <li>🔹 Prévenir toute absence de plus de 7 jours 📅</li>
-        </ul>
-
-        <hr>
-
-        <h2 class="section-title">📜 Les Lois du Trône 📜</h2>
-        <p><em>"Un royaume fort repose sur des règles justes et partagées."</em></p>
-        
-        <p><strong>🎯 Engagements de chaque membre :</strong></p>
+        <h2 class="section-title-foe">📜 Les Lois du Trône</h2>
         <div class="highlight-box">
-            <ul>
-                <li><strong>⚔️ Champs de Bataille (CBG) :</strong> 500 combats minimum (ou équivalents : 250 négociations)</li>
-                <li><strong>🌌 Incursions Quantiques (IQ) :</strong> 500 contributions (combats, dons de ressources ou de troupes)</li>
-                <li><strong>🧭 Expéditions de Guilde (EG) :</strong> Tous les niveaux sont ouverts chaque semaine 🔓. Pas de quotas, mais une forte participation est attendue 🔥</li>
+            <ul style="list-style-type: none; padding: 0;">
+                <li>⚔️ <strong>CBG :</strong> 500 combats minimum (ou 250 négo).</li>
+                <li>🌌 <strong>IQ :</strong> 500 contributions.</li>
+                <li>🧭 <strong>EG :</strong> Tous les niveaux ouverts chaque semaine.</li>
+                <li style="color: var(--accent-red); margin-top: 10px;">🚫 Les snipes intra-guilde sont strictement interdits ❌</li>
             </ul>
         </div>
-
-        <h2 class="section-title">🌟 Nos Valeurs 🌟</h2>
-        <p>Notre bannière s’élève pour offrir à tous une fraternité solide 🤝, un royaume de progrès 📈 et un havre de camaraderie 🏰.</p>
-        <p>Nos serments reposent sur :</p>
-        <ul>
-            <li>💛 <strong>Solidarité :</strong> nul ne combat seul ⚔️</li>
-            <li>🛡️ <strong>Loyauté :</strong> la parole donnée vaut plus que l’or 💰</li>
-            <li>🤝 <strong>Respect & courtoisie :</strong> même les rois se doivent de l’honneur 👑</li>
-            <li>😊 <strong>Bonne humeur & entraide :</strong> un royaume sans joie est un royaume perdu 🎉</li>
-        </ul>
     </section>
 
-
-
-<section id="events" class="card-foe">
-    <h2 class="section-title-foe">📅 Agenda du Royaume</h2>
-    <ul>
-        <li><strong>Mardi 08:30 :</strong> Ouverture des EG 🧭</li>
-        <li><strong>Jeudi 08:00 :</strong> Lancement CBG ⚔️</li>
-        <li><strong>Tous les jours :</strong> Récolte & Polissage 💎</li>
-          <li><strong>Jeudi (1/2 semaines) :</strong>Lancement Incursions Quantiques🌀</li>
-    </ul>
-</section>
-
-<section id="galerie" class="card-foe">
-    <h2 class="section-title-foe">🖼️ Nos Victoires (Galerie)</h2>
-    <div class="gallery-grid">
-        <div class="gallery-item"><img src="Capture profile guilde IT.png" width="100%"></div>
-        <div class="gallery-item"><img src="Classement Géné IT.png" width="100%"></div>
-        <div class="gallery-item"><img src="EG contre PN-IT.png" width="100%"></div>
-        <div class="gallery-item"><img src="IQ géné classement.png" width="100%"></div>
-    </div>
-</section>
-
-    <section id="membres" class="card-foe">
-        <h2 class="section-title-foe">👥 Effectifs du Royaume (63 membres)</h2>
+    <section id="membres" class="card-foe" data-aos="fade-up">
+        <h2 class="section-title-foe">👥 Effectifs (63 Guerriers)</h2>
         <div class="members-grid">
-            <div class="member-name">CombattantDamien</div><div class="member-name">zac53</div>
-            <div class="member-name">Fleabag</div><div class="member-name">Achille 38</div>
-            <div class="member-name">miko55110</div><div class="member-name">Balbesse</div>
-            <div class="member-name">Grandmiche</div><div class="member-name">BARAKudA</div>
-            <div class="member-name">Yxyyy</div><div class="member-name">mckinnn96</div>
-            <div class="member-name">PTV362X</div><div class="member-name">mysticm0nkey</div>
-            <div class="member-name">michel2105</div><div class="member-name">Justine 2268 la Noble</div>
-            <div class="member-name">Enora 170</div><div class="member-name">MAV3RICK</div>
-            <div class="member-name">-hernione-</div><div class="member-name">Eric35300</div>
-            <div class="member-name">flot le détraqué</div><div class="member-name">Sir Storm le Ouf</div>
-            <div class="member-name">Génie</div><div class="member-name">THEIRONMAN</div>
-            <div class="member-name">BULLDOG14</div><div class="member-name">Hippolyte 2711</div>
-            <div class="member-name">ChristelDEL</div><div class="member-name">lolo le renard</div>
-            <div class="member-name">Dagavit</div><div class="member-name">Gene la petite</div>
-            <div class="member-name">orkis</div><div class="member-name">Kadala03210</div>
-            <div class="member-name">Vic le Rebelle</div><div class="member-name">nininene67</div>
-            <div class="member-name">-- Zozo --</div><div class="member-name">Farsmart</div>
-            <div class="member-name">RZIFoudroyeur2cannetons</div><div class="member-name">Quentin Coldwater</div>
-            <div class="member-name">FanatiqueJp</div><div class="member-name">le Zulu</div>
-            <div class="member-name">chouchenn35</div><div class="member-name">Marco002</div>
-            <div class="member-name">didon 50</div><div class="member-name">Nad.........</div>
-            <div class="member-name">patoufini</div><div class="member-name">tuyodepoel</div>
-            <div class="member-name">baurice le grand</div><div class="member-name">Guiraud83</div>
-            <div class="member-name">cdsac</div><div class="member-name">Elowen</div>
-            <div class="member-name">Den Bro</div><div class="member-name">Yeb31</div>
-            <div class="member-name">jeanjean64</div><div class="member-name">FC Brière 44</div>
-            <div class="member-name">Jeanjane</div><div class="member-name">blondin75</div>
-            <div class="member-name">Al Humett</div><div class="member-name">Niprano</div>
-            <div class="member-name">Kemawr</div><div class="member-name">Ragnard lacaille</div>
-            <div class="member-name">wsany</div><div class="member-name">CoinCoinFoudroyé</div>
-            <div class="member-name">Remytion</div><div class="member-name">soizic la rebelle</div>
-            <div class="member-name">tanit17</div>
+            <div class="member-name"><a href="https://foe-data.ovh/world/fr17/player/4614272" target="_blank">CombattantDamien</a></div>
+            <div class="member-name"><a href="#" target="_blank">zac53</a></div>
+            <div class="member-name"><a href="#" target="_blank">Fleabag</a></div>
+            <div class="member-name"><a href="https://foe-data.ovh/world/fr17/player/5163827" target="_blank">Achille 38</a></div>
+            <div class="member-name"><a href="#" target="_blank">miko55110</a></div>
+            <div class="member-name"><a href="#" target="_blank">Balbesse</a></div>
+            <div class="member-name"><a href="#" target="_blank">Grandmiche</a></div>
+            <div class="member-name"><a href="#" target="_blank">BARAKudA</a></div>
+            <div class="member-name"><a href="#" target="_blank">Yxyyy</a></div>
+            <div class="member-name"><a href="#" target="_blank">mckinnn96</a></div>
+            <div class="member-name"><a href="#" target="_blank">PTV362X</a></div>
+            <div class="member-name"><a href="https://foe-data.ovh/world/fr17/player/10896624" target="_blank">mysticm0nkey</a></div>
+            <div class="member-name"><a href="#" target="_blank">michel2105</a></div>
+            <div class="member-name"><a href="#" target="_blank">Justine 2268</a></div>
+            <div class="member-name"><a href="https://foe-data.ovh/world/fr17/player/5098984" target="_blank">Enora 170</a></div>
+            <div class="member-name"><a href="#" target="_blank">MAV3RICK</a></div>
+            <div class="member-name"><a href="#" target="_blank">-hernione-</a></div>
+            <div class="member-name"><a href="#" target="_blank">Eric35300</a></div>
+            <div class="member-name"><a href="#" target="_blank">flot le détraqué</a></div>
+            <div class="member-name"><a href="#" target="_blank">Sir Storm le Ouf</a></div>
+            <div class="member-name"><a href="#" target="_blank">Génie</a></div>
+            <div class="member-name"><a href="#" target="_blank">THEIRONMAN</a></div>
+            <div class="member-name"><a href="#" target="_blank">BULLDOG14</a></div>
+            <div class="member-name"><a href="#" target="_blank">Hippolyte 2711</a></div>
+            <div class="member-name"><a href="#" target="_blank">ChristelDEL</a></div>
+            <div class="member-name"><a href="#" target="_blank">lolo le renard</a></div>
+            <div class="member-name"><a href="#" target="_blank">Dagavit</a></div>
+            <div class="member-name"><a href="#" target="_blank">Gene la petite</a></div>
+            <div class="member-name"><a href="#" target="_blank">orkis</a></div>
+            <div class="member-name"><a href="#" target="_blank">Kadala03210</a></div>
+            <div class="member-name"><a href="#" target="_blank">Vic le Rebelle</a></div>
+            <div class="member-name"><a href="#" target="_blank">nininene67</a></div>
+            <div class="member-name"><a href="https://foe-data.ovh/world/fr17/player/850559027" target="_blank">-- Zozo --</a></div>
+            <div class="member-name"><a href="#" target="_blank">Farsmart</a></div>
+            <div class="member-name"><a href="https://foe-data.ovh/world/fr17/player/851617007" target="_blank">RZIFoudroyeur</a></div>
+            <div class="member-name"><a href="#" target="_blank">Quentin Coldwater</a></div>
+            <div class="member-name"><a href="#" target="_blank">FanatiqueJp</a></div>
+            <div class="member-name"><a href="#" target="_blank">le Zulu</a></div>
+            <div class="member-name"><a href="#" target="_blank">chouchenn35</a></div>
+            <div class="member-name"><a href="#" target="_blank">Marco002</a></div>
+            <div class="member-name"><a href="#" target="_blank">didon 50</a></div>
+            <div class="member-name"><a href="#" target="_blank">Nad.........</a></div>
+            <div class="member-name"><a href="#" target="_blank">patoufini</a></div>
+            <div class="member-name"><a href="#" target="_blank">tuyodepoel</a></div>
+            <div class="member-name"><a href="#" target="_blank">baurice le grand</a></div>
+            <div class="member-name"><a href="#" target="_blank">Guiraud83</a></div>
+            <div class="member-name"><a href="#" target="_blank">cdsac</a></div>
+            <div class="member-name"><a href="#" target="_blank">Elowen</a></div>
+            <div class="member-name"><a href="#" target="_blank">Den Bro</a></div>
+            <div class="member-name"><a href="#" target="_blank">Yeb31</a></div>
+            <div class="member-name"><a href="#" target="_blank">jeanjean64</a></div>
+            <div class="member-name"><a href="#" target="_blank">FC Brière 44</a></div>
+            <div class="member-name"><a href="#" target="_blank">Jeanjane</a></div>
+            <div class="member-name"><a href="#" target="_blank">blondin75</a></div>
+            <div class="member-name"><a href="#" target="_blank">Al Humett</a></div>
+            <div class="member-name"><a href="#" target="_blank">Niprano</a></div>
+            <div class="member-name"><a href="#" target="_blank">Kemawr</a></div>
+            <div class="member-name"><a href="#" target="_blank">Ragnard lacaille</a></div>
+            <div class="member-name"><a href="#" target="_blank">wsany</a></div>
+            <div class="member-name"><a href="https://foe-data.ovh/world/fr17/player/852053582" target="_blank">CoinCoinFoudroyé</a></div>
+            <div class="member-name"><a href="#" target="_blank">Remytion</a></div>
+            <div class="member-name"><a href="#" target="_blank">soizic la rebelle</a></div>
+            <div class="member-name"><a href="#" target="_blank">tanit17</a></div>
         </div>
     </section>
 
-<section id="recrutement" class="content-section">
-    <div class="card-foe">
-        <h2 class="section-title-foe">📩 Contacts Recrutement</h2>
-        <p class="intro-text">Vous souhaitez rejoindre nos rangs ? Envoyez un message en jeu à l'un de nos recruteurs :</p>
-        
-        <div class="contact-container">
-            <div class="contact-entry">👤 Enora 170</div>
-            <div class="contact-entry">👤 RZiFoudroyeur2cannetons</div>
-            <div class="contact-entry">👤 CombattantDamien</div>
-            <div class="contact-entry">👤 Zozo</div>
-            <div class="contact-entry">👤 Achille38</div>
-            <div class="contact-entry">👤 MysticmOnkey 🃏</div>
+    <section id="recrutement" class="card-foe" data-aos="fade-left">
+        <h2 class="section-title-foe">📩 Corps des Recruteurs</h2>
+        <div class="members-grid">
+            <div class="contact-entry"><a href="https://foe-data.ovh/world/fr17/player/5098984" target="_blank">👤 Enora 170</a></div>
+            <div class="contact-entry"><a href="https://foe-data.ovh/world/fr17/player/851617007" target="_blank">👤 RZiFoudroyeur</a></div>
+            <div class="contact-entry"><a href="https://foe-data.ovh/world/fr17/player/4614272" target="_blank">👤 CombattantDamien</a></div>
+            <div class="contact-entry"><a href="https://foe-data.ovh/world/fr17/player/850559027" target="_blank">👤 Zozo</a></div>
+            <div class="contact-entry"><a href="https://foe-data.ovh/world/fr17/player/5163827" target="_blank">👤 Achille 38</a></div>
+            <div class="contact-entry"><a href="https://foe-data.ovh/world/fr17/player/10896624" target="_blank">👤 Mystic Monkey</a></div>
         </div>
-    </div>
-</section>
-
-<section id="discord" class="card-foe">
-    <h2 class="section-title-foe">🎮 Discord de la Guilde</h2>
-    <div class="discord-card" style="text-align: center;">
-        <p>Rejoignez notre centre de ralliement pour la stratégie, les annonces de guilde et l'entraide entre membres.</p>
-        
-        <a href="https://discord.gg/JbjbqzNnsg" target="_blank" class="discord-btn">
-            Rejoindre le Trône
-        </a>
-
-        <div style="margin-top: 30px; border-top: 1px dashed #444; padding-top: 20px;">
-            <p style="font-size: 0.9rem; color: #bdc3c7;">🛡️ Besoin d'aide sur le jeu ?</p>
-            <a href="https://discord.gg/wTajt9mMdd" target="_blank" class="discord-btn secondary">
-                Wiki & Aide FOE
-            </a>
-        </div>
-    </div>
-</section>
-
-<section id="createur" class="card-foe creator-card">
-        <div class="creator-title">✨ L'Architecte ✨</div>
-        <div class="creator-name">CoinCoinFoudroyé alias Mapo</div>
-        <p style="font-style: italic; margin-top: 20px; color: #bdc3c7;">
-            "Ce portail a été forgé par la vision de Mapo en collaboration avec l'Intelligence Artificielle.<br>
-            Une alliance entre l'esprit d'un conquérant et la précision de l'acier numérique."
-        </p>
-        <p>🛠️ <em>Co-créateur du Trône de Fer</em></p>
     </section>
 
+    <section id="discord" class="card-foe" style="text-align: center;" data-aos="zoom-in">
+        <h2 class="section-title-foe" style="justify-content: center;">🎮 Communications</h2>
+        <a href="https://discord.gg/JbjbqzNnsg" target="_blank" class="discord-btn btn-primary">Discord Iron Ray-Volution</a>
+        <a href="https://discord.gg/forgeofempires" target="_blank" class="discord-btn btn-secondary">Discord Officiel FOE</a>
+    </section>
 
-<button id="theme-toggle" title="Changer de mode">🌓</button>
+    <section id="architecte" class="card-foe" style="text-align: center; border-left: none; border-top: 4px solid var(--gold);" data-aos="fade-up">
+        <h2 class="section-title-foe" style="justify-content: center;">✨ L'Architecte</h2>
+        <p><strong>CoinCoinFoudroyé alias Mapo</strong></p>
+        <p style="font-style: italic; opacity: 0.7;">"Ce portail a été forgé pour la gloire de la Iron Ray-Volution."</p>
+    </section>
 </div>
 
-
 <footer>
-    <p>&copy; 2026 The Iron Throne - Guilde Forge of Empires</p>
+    <p>&copy; 2026 Iron Ray-Volution - Forge of Empires</p>
 </footer>
 
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    // --- GESTION DU MODE CLAIR/SOMBRE ---
-    const btn = document.getElementById('theme-toggle');
-    btn.addEventListener('click', () => {
-        document.body.classList.toggle('light-mode');
-    });
+    AOS.init({ duration: 1000, once: false });
 
-    // --- ANIMATION DES ÉTINCELLES DE FORGE ---
+    function toggleTheme() {
+        document.body.classList.toggle('light-mode');
+    }
+
     function createParticle() {
         const p = document.createElement('div');
         p.classList.add('particle');
         p.style.left = Math.random() * 100 + 'vw';
-        p.style.animationDuration = (Math.random() * 3 + 2) + 's';
-        p.style.opacity = Math.random();
+        p.style.animationDuration = (Math.random() * 2 + 3) + 's';
         document.body.appendChild(p);
         setTimeout(() => p.remove(), 5000);
     }
-    setInterval(createParticle, 200); // Crée une étincelle toutes les 200ms
+    setInterval(createParticle, 150);
 </script>
+
 </body>
 </html>
